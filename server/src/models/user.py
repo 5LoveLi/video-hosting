@@ -1,5 +1,4 @@
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
-# from sqlalchemy.orm import relationship
 
 from src.database import Base
 
@@ -12,4 +11,3 @@ class User(Base):
     hashed_password = Column(String)
     name = Column(String)
 
-    # items = relationship("Item", back_populates="owner")

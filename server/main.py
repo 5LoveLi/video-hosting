@@ -1,13 +1,35 @@
-from typing import Union
+from fastapi import FastAPI
 
-from fastapi import FastAPI, HTTPException, Depends
-from sqlalchemy.orm import Session
 
-from src import crud
-from src.models import user
-from src.schemas import userSchema
+from src.models import user, video
 from src.database import SessionLocal, engine
 
+
 user.Base.metadata.create_all(bind=engine)
+video.Base.metadata.create_all(bind=engine)
+
 
 app = FastAPI()
+
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+
+
+from src.routes import registration
+from src.routes import authorizations
+
+
+
+
+
+
+
+
+
+
