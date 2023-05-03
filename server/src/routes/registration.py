@@ -1,5 +1,5 @@
 from fastapi import HTTPException, Depends
-from werkzeug.security import generate_password_hash
+# from werkzeug.security import generate_password_hash
 from sqlalchemy.orm import Session
 
 from src.cruds import userCrud
@@ -10,7 +10,7 @@ from main import app, get_db
 
 
 @app.get('/register')
-def get_farm():
+def get_form():
     return {"Hello": "World"}
 
 
