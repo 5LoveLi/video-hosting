@@ -13,9 +13,9 @@ def get_video_by_name(db: Session, name: str):
     return db.query(Video).filter(Video.name == name).first()
 
 
-def create_video(db: Session, video: VideoCreate):
+def create_video(db: Session, video_name, video_description, id_author, video_link):
     db_video = Video(
-        name=video.name, description=video.description, data=datetime.now(), id_author=video.id_author, likes=0, link=video.link
+        name=video_name, description=video_description, data=datetime.now(), id_author=id_author, likes=0, link=video_link
         )
     db.add(db_video)
     db.commit()

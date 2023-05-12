@@ -7,9 +7,9 @@ class VideoBase(BaseModel):
     description: str | None = None
     data: datetime 
     id_author: int 
-    link: str
     likes: int | None = None
-
+    link: str
+    
 
 class VideoCreate(VideoBase):
     pass
