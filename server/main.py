@@ -23,7 +23,7 @@ def get_db():
 
 
 
-from src.routes import registration, authorizations, createVideo
+from src.routes import registration, authorizations, createVideo, tape
 
 
 

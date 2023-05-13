@@ -5,8 +5,8 @@ from src.models.video import Video
 from src.schemas.videoSchema import VideoCreate
 
 
-def get_video(db: Session, video_id: int):
-    return db.query(Video).filter(Video.id == video_id).first()
+def get_video(db: Session):
+    return db.query(Video).all()
 
 
 def get_video_by_name(db: Session, name: str):
