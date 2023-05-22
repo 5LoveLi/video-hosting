@@ -19,6 +19,6 @@ def get_form(db: Session = Depends(get_db)):
 
 
 
-@app.post('/testroute')
-async def post():
+@app.get('/testroute')
+async def get():
     return{'test':'test'}
