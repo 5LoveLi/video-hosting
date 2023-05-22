@@ -1,4 +1,4 @@
-import { AUTH_TOKEN_KEY } from "../constants/application"
+import { AUTH_TOKEN_KEY } from "../constants/application";
 
 const DEFAULT_DOMAIN = 'http://localhost:8000';
 
@@ -30,8 +30,8 @@ const post = async <T>(path: string, body?: any): Promise<T> => {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${token}`,
-      body,
-    }
+    },
+    body,
   })
   const data = res.json() as T;
 
