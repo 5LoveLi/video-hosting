@@ -3,21 +3,26 @@ from pydantic import BaseModel
 
 
 class VideoBase(BaseModel):
+    id: int
     name: str
-    description: str | None = None
-    data: datetime 
-    id_author: int 
-    likes: int | None = None
-    link: str
-    
+    preview: str
 
-class VideoCreate(VideoBase):
-    pass
+
+class VisitCard(VideoBase):
+    author: str
+    like: int
 
 
 class Video(VideoBase): 
-    id: int 
-    
+    data: datetime 
+    description: str | None = None
+    id_author: int 
+    link: str
 
+    
     class Config:
         orm_mode = True 
+
+
+class SearchBase(BaseModel):
+    stringQuery: str

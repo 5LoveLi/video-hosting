@@ -3,9 +3,9 @@ from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
 from src.database import Base
 
 
-class User(Base):
-    __tablename__ = "users"
+class Like(Base):
+    __tablename__ = "likes"
 
     id = Column(Integer, primary_key=True, index=True)
-    login = Column(String, unique=True)
-    hashed_password = Column(String)
+    id_video = Column(Integer)
+    id_user = Column(Integer)

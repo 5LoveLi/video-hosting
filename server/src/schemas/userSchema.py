@@ -3,11 +3,10 @@ from pydantic import BaseModel
 
 class UserBase(BaseModel):
     login: str
-    name: str
 
 
 class UserCreate(UserBase):
-    hashed_password: str
+    password: str
 
 
 class User(UserBase):

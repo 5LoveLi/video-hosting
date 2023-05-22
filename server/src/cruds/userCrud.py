@@ -22,7 +22,7 @@ def get_user_by_login(db: Session, login: str):
 
 def create_user(db: Session, user: UserCreate):
     db_user = User(
-        login=user.login, hashed_password=generate_password_hash(user.password), name=user.name)
+        login=user.login, hashed_password=generate_password_hash(user.password))
     db.add(db_user)
     db.commit()
     db.refresh(db_user)

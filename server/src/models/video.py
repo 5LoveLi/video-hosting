@@ -11,7 +11,7 @@ class Video(Base):
     description = Column(String)
     data = Column(DateTime)
     id_author = Column(Integer)
-    likes = Column(Integer)
+    preview = Column(String)
     link = Column(String)
 
 

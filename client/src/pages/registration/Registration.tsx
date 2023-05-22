@@ -1,4 +1,4 @@
-import { RegistrForm } from "../../components/registrForm/RegistrForm"
+import { RegistrForm } from '../../components/RegistrForm/RegistrForm'
 import './Registration.css'
 
 export const Registration: React.FC = () => {

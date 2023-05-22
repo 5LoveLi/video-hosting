@@ -2,8 +2,10 @@ import { CardData } from "../../type/Card.types"
 
 // import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import { Avatar, Card } from 'antd';
+import { HeartOutlined } from '@ant-design/icons';
 
 import "./VisitCard.css"
+
 
 const { Meta } = Card;
 
@@ -22,16 +24,17 @@ export const VisitCard = (card: CardData) => {
     cover={
       <img
         alt="example"
-        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+        src='https://fc85-5-165-233-226.ngrok-free.app/preview/японец.jpg'
       />
     }
   >
     <Meta
-      // avatar={<Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />}
+      
       title={name}
-      description={likes}
+      
+      description={<>{likes} <HeartOutlined /></>}
     />
-    {data}
+    {/* {data} */}
   </Card>
   </a>
   </div>

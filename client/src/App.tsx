@@ -1,4 +1,5 @@
 import { Private } from './routes/Private';
+import 'antd/dist/reset.css';
 
 function App() {
   return (

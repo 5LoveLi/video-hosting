@@ -3,15 +3,15 @@ from datetime import datetime, timedelta
 from typing import Annotated
 
 from fastapi import Depends, HTTPException, status
-from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 from jose import JWTError, jwt
 from dotenv import load_dotenv
 
-from main import app, get_db
+from main import app, get_db, oauth2_scheme
 
 from src.cruds import userCrud
-from src.schemas import authSchema
+from src.schemas import authSchema, userSchema
 
 
 load_dotenv('.env')
@@ -20,7 +20,6 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 
 def create_access_token(data: dict, expires_delta: timedelta | None = None):
