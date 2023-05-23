@@ -1,6 +1,5 @@
 import { AUTH_TOKEN_KEY } from "../constants/application";
 
-const DEFAULT_DOMAIN = 'http://localhost:8000';
 
 const get = async <T>(path: string): Promise<T> => {
   const token = localStorage.getItem(AUTH_TOKEN_KEY)
@@ -15,7 +14,7 @@ const get = async <T>(path: string): Promise<T> => {
   return data;
 }
 export const getWithoutAuth = async <T>(path: string): Promise<T> => {
-  const res = await fetch(`${DEFAULT_DOMAIN}${path}`, {
+  const res = await fetch(path, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json'}
   })
