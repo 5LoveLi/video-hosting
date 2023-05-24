@@ -6,8 +6,8 @@ from src.cruds import videoCrud, likeCrud, userCrud
 from src.schemas.videoSchema import VisitCard
 
 
-@app.get('/')
-def get_form(db: Session = Depends(get_db)):
+@app.get('/tape')
+async def get_form(db: Session = Depends(get_db)):
     videos = videoCrud.get_video(db)
     tape = []
     for video in videos:
@@ -19,6 +19,6 @@ def get_form(db: Session = Depends(get_db)):
 
 
 
-@app.get('/testroute')
+@app.get('/test')
 async def get():
     return{'test':'test'}
