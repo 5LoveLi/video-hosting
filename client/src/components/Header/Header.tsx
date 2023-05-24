@@ -1,11 +1,16 @@
+import { SearchForm } from "../Search/Search"
+import { Col, Row } from 'antd';
+
+import './Header.css'
 
 export const Header: React.FC = () => {
   return (
     <>
-      <div>
-        <h2> Видео</h2>
-      </div>
-
+      <Row className="indent">
+        <Col span={12} offset={7}>
+          <SearchForm/>
+        </Col>
+      </Row>
     </>
   )
 }
