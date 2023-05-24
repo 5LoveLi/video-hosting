@@ -1,3 +1,7 @@
 .card {
   margin: 20px;
 }
+
+.like {
+  text-align: right
+}

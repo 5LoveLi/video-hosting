@@ -22,7 +22,13 @@ export const Tape: React.FC = () => {
     getTape();
   }, [])
 
-  return(<></>)
+  return(
+    <>
+      <Row>
+        {cards.map(({ id, name, preview, author, like}) => ( <Col lg={{ span: 4, offset: 3 }}><VisitCard id={id} name={name} like={like} preview={preview} author={author} /></Col>))}
+     </Row>
+
+  </>)
 
 }
 
