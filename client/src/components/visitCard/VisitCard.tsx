@@ -7,22 +7,24 @@ import { HeartOutlined } from '@ant-design/icons';
 import "./VisitCard.css"
 import { TapeDTO } from "../../services/Video/VideoService.types";
 
+import { VideoPlay } from "../VideoPlay/VideoPlay";
+
 
 const { Meta } = Card;
 
 
 export const VisitCard = (card: TapeDTO) => {
-  const {name, preview, author, like} = card;
+  const {id, name, preview, author, like} = card;
 
   return (<>
   <div className="card">
-    <a href="viewing">
+    <a href={`/viewing/${id}`}>
     <Card
     style={{ width: 350}}
     cover={
       <img
         alt="example"
-        src='https://04ff-5-165-233-226.ngrok-free.app/preview/японец.jpg'
+        src={preview}
       />
     }
   >

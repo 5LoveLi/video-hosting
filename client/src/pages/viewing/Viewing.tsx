@@ -1,11 +1,13 @@
+import { useParams } from "react-router-dom"
+import { VideoPlay } from "../../components/VideoPlay/VideoPlay"
 
 export const Viewing: React.FC = () => {
+  
+  const { id } = useParams();
   return (
     <>
-      <div>
-        <h2> Видео</h2>
-      </div>
-
+    {id}
+    <VideoPlay/>
     </>
   )
 }

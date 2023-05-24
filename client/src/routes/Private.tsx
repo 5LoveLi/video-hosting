@@ -17,7 +17,7 @@ export const Private = () => {
           <Route path='/' element={<Tape />} />
           <Route path="/registration" element={<Registration />} />
           <Route path="/authorization" element={<Authorization />} />
-          <Route path="/viewing" element={<Viewing />} />
+          <Route path="/viewing/:id" element={<Viewing/>} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
