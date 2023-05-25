@@ -1,14 +1,13 @@
-from fastapi import Depends
+from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 from main import app, get_db
 from src.cruds import videoCrud, likeCrud, userCrud
 from src.schemas.videoSchema import VisitCard
 
+router = APIRouter()
 
-@app.get('/tape')
-async def get_form(db: Session = Depends(get_db)):
-    videos = videoCrud.get_video(db)
+def correction_data(videos: list, db):
     tape = []
     for video in videos:
         author_name = userCrud.get_user(db=db, user_id=video.id_author).login
@@ -18,7 +17,21 @@ async def get_form(db: Session = Depends(get_db)):
     return tape
 
 
+@router.get('')
+async def get_tape(db: Session = Depends(get_db)):
+    videos = videoCrud.get_video(db)
+    tape = correction_data(videos, db)
+    return tape
 
-@app.get('/test')
-async def get():
-    return{'test':'test'}
+
+
+@router.get('/search/{string_search}')
+async def get(string_search:str, db: Session = Depends(get_db)):
+    videos = videoCrud.get_video_by_name(db=db, name=string_search)
+    tape = correction_data(videos, db)
+    return tape
+
+
+
+app.include_router(router, prefix="/tape")
+
