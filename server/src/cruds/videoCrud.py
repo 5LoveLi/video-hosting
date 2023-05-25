@@ -12,7 +12,6 @@ def get_video_by_id(db: Session, id:int):
 
 
 def get_video_by_name(db: Session, name: str):
-    
     return db.query(Video).filter(Video.name == name).all()
 
 

@@ -5,18 +5,19 @@ from pydantic import BaseModel
 class VideoBase(BaseModel):
     id: int
     name: str
-    preview: str
+    author: str
+
 
 
 class VisitCard(VideoBase):
-    author: str
+    preview: str
+
     like: int
 
 
 class Video(VideoBase): 
     data: datetime 
     description: str | None = None
-    id_author: int 
     link: str
 
     
