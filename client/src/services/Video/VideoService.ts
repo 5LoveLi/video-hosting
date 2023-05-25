@@ -12,5 +12,12 @@ export const VideoService = {
     const data = await ApiClient.getWithoutAuth<VideoPlayType>(`/viewing/${id}`)
 
     return data
+  },
+
+  search: async (str: any) => {
+    const data = await ApiClient.getWithoutAuth<Array<TapeDTO>>(`tape/search/${str}`);
+
+    return data;
+    
   }
 }
