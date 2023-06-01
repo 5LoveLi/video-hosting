@@ -1,0 +1,16 @@
+.like {
+  font-size: 20px;
+  /* line-height: 3em; */
+}
+
+.author {
+  font-size: 20px;
+}
+
+.author-img {
+  margin-right: 10px;
+}
+
+.description {
+  margin-top: 15px;
+}
