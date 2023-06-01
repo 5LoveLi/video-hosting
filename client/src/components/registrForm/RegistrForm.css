@@ -9,13 +9,14 @@
   align-items: center; */
 }
 
-.table label {
-  /* display: flex; */
-  justify-content: end;
-}
 
 .Input {
   width: 250px;
-  /* text-align: center; */
-  box-sizing: border-box;
+  margin: 3px;
+}
+
+.massage {
+  font-size: 12px;
+  color: red;
+  margin-left: 8px;
 }

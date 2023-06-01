@@ -1,43 +1,40 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button, Form, Input } from 'antd';
 
 import './RegistrForm.css'
+import { RegisterService } from '../../services/RegisterService/RegisterService';
 
 
 
 export const RegistrForm = () => {
 
-  const [inputLogin, setInputLogin] = useState('');
+  const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
-  const [repeatPassword, setRepeatPassword] = useState('');
-  // const [, setToken] = useContext(UserContext);
+  const [loginStatus, setLoginStatus] = useState<undefined | 'error' >(undefined);
+  const [message, setMessage] = useState('');
+  const navigate  = useNavigate();
 
 
-  const submitRegistration = async (event: any) => {
+  const register = async (event: any) => {
     event.preventDefault();
 
-    if (password === repeatPassword) {
-      const form = {
-        login: inputLogin,
-        password: password,
-      } 
+    const form = {
+      login: login,
+      password: password,
+    }  
 
-      const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json'},
-        body: JSON.stringify(form)
-      }
+    try {
+      setLoginStatus(undefined);
+      setMessage('');
+      const answer = await RegisterService.register(form)
+      console.log(answer)
+      navigate('/authorization')
 
-      const response = await fetch('/register', requestOptions);
-      const data = await response.json();
-
-      if (!response.ok) {
-        console.log('не удалось зарегестрироваться');
-      } else {
-        // setToken(data.message);
-      }
+    } catch (error) {
+      setLoginStatus('error');
+      setMessage('Такой логин уже существует!')
     }
-    
   }
 
   
@@ -48,28 +45,27 @@ export const RegistrForm = () => {
         rules={[{ required: true, message: 'Please input your login!' }]}
       >
         <Input 
+          status={loginStatus}
           placeholder='Login' 
           className='Input' 
-          value={inputLogin}
+          value={login}
+          onChange={(e) => setLogin(e.target.value)}
           />
+          <p className='massage'>{message}</p>
       </Form.Item>
-
       <Form.Item
         name="password"
         rules={[{ required: true, message: 'Please input your password!' }]}
       >
-        <Input.Password placeholder='Password' className='Input' value={password} />
-      </Form.Item>
-
-      <Form.Item
-        name="repeat password"
-        rules={[{ required: true, message: 'Please input your password!' }]}
-      >
-        <Input.Password placeholder='Repeat password' className='Input' value={repeatPassword}/>
+        <Input.Password 
+          placeholder='Password' 
+          className='Input' 
+          value={password} 
+          onChange={(e) => setPassword(e.target.value)}/>
       </Form.Item>
 
       <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-        <Button type="primary" htmlType="submit" className='indent' onClick={submitRegistration}>
+        <Button type="primary" className='indent' onClick={register}>
           Register
         </Button>
       </Form.Item>
