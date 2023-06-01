@@ -12,11 +12,11 @@ interface ITableInfo {
 
 export const TableInfo = ({table} : ITableInfo) => {
   const [size, setSize] = useState<SizeType>('large');
-  const { id_user, author, description, like} = table
+  const { id, author, description, like} = table
   // const [likes, setLikes] = useState(Number);
 
   const putLike = async () => {
-    VideoService.like(id_user);
+    VideoService.like(id);
   }
 
   return (

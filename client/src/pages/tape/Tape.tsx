@@ -35,9 +35,6 @@ export const Tape: React.FC = () => {
      <Row>
       {cards.map((card) => (<Col lg={{ span: 4, offset: 3 }}><VisitCard visitCard={card}/></Col>))}
      </Row>
-
-
-
   </>)
 
 }
