@@ -7,8 +7,7 @@ from src.cruds import videoCrud, userCrud, likeCrud
 
 
 @app.post('/viewing/{video_id}/like')
-def viewing_video(video_id: int, token: Annotated[str, Depends(oauth2_scheme)], db: Session = Depends(get_db)):
-    
+async def viewing_video(video_id: int, token: Annotated[str, Depends(oauth2_scheme)], db: Session = Depends(get_db)):
     user_id = userCrud.get_current_user(db, token).id
     user_liked = likeCrud.user_like_video(db=db, video_id=video_id, user_id=user_id)
     if user_liked:

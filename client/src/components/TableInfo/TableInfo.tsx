@@ -13,10 +13,12 @@ interface ITableInfo {
 export const TableInfo = ({table} : ITableInfo) => {
   const [size, setSize] = useState<SizeType>('large');
   const { id, author, description, like} = table
-  // const [likes, setLikes] = useState(Number);
+  const [likes, setLikes] = useState<number>();
+
 
   const putLike = async () => {
-    VideoService.like(id);
+    const updateLike = await VideoService.like(id);
+    setLikes((await updateLike).likes)
   }
 
   return (
@@ -29,7 +31,7 @@ export const TableInfo = ({table} : ITableInfo) => {
       </Col>
       <Col span={8} offset={0}>
         <div className='like'>
-          <Button  shape="round" size={size}>{like} <HeartOutlined onClick={putLike}/></Button>
+          <Button  shape="round" size={size} onClick={putLike}>{likes} <HeartOutlined/></Button>
         </div>
       </Col>
     </Row>
