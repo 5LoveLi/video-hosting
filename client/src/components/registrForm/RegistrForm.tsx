@@ -27,10 +27,8 @@ export const RegistrForm = () => {
     try {
       setLoginStatus(undefined);
       setMessage('');
-      const answer = await RegisterService.register(form)
-      console.log(answer)
+      await RegisterService.register(form)
       navigate('/authorization')
-
     } catch (error) {
       setLoginStatus('error');
       setMessage('Такой логин уже существует!')

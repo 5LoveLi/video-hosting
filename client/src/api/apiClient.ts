@@ -25,16 +25,26 @@ export const getWithoutAuth = async <T>(path: string): Promise<T> => {
 
 export const post = async <T>(path: string, body?: any): Promise<T> => {
   const token = localStorage.getItem(AUTH_TOKEN_KEY)
-  const res = await fetch(path, {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${token}`,
-    },
-    body,
-  })
-  const data = res.json() as T;
+  try {
+    const res = await fetch(path, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      },
+      body,
+    })
 
-  return data;
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
+    
+    const data = res.json() as T;
+    return data;
+
+  } catch (error) {
+    return Promise.reject(error);
+  }
+  
 }
 
 export const postWithoutAuth = async <T>(path: string, body?: any) => {
