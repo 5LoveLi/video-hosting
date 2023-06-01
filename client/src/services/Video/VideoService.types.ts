@@ -8,10 +8,15 @@ export type TapeDTO = {
 
 
 export type VideoPlayType = {
-  id: number,
+  id_user: number,
   name: string,
   author: string,
+  like: number,
   data: string,
   description: string,
   link: string
+}
+
+export type Like = {
+  likes: number
 }

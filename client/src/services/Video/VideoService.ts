@@ -1,5 +1,5 @@
 import { ApiClient } from "../../api/apiClient"
-import { TapeDTO, VideoPlayType } from "./VideoService.types"
+import { TapeDTO, VideoPlayType, Like } from "./VideoService.types"
 
 export const VideoService = {
   gallery: async () => {
@@ -18,6 +18,11 @@ export const VideoService = {
     const data = await ApiClient.getWithoutAuth<Array<TapeDTO>>(`tape/search/${str}`);
 
     return data;
-    
+  }, 
+
+  like: async (id: any) => {
+    const data = await ApiClient.post<Like>(`/viewing/${id}/like`);
+
+    return data;
   }
 }
