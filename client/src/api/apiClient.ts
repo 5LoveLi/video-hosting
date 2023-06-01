@@ -1,7 +1,7 @@
 import { AUTH_TOKEN_KEY } from "../constants/application";
 
 
-const get = async <T>(path: string): Promise<T> => {
+export const get = async <T>(path: string): Promise<T> => {
   const token = localStorage.getItem(AUTH_TOKEN_KEY)
   const res = await fetch(path, {
     method: 'GET',
@@ -23,7 +23,7 @@ export const getWithoutAuth = async <T>(path: string): Promise<T> => {
   return data;
 }
 
-const post = async <T>(path: string, body?: any): Promise<T> => {
+export const post = async <T>(path: string, body?: any): Promise<T> => {
   const token = localStorage.getItem(AUTH_TOKEN_KEY)
   const res = await fetch(path, {
     method: 'POST',
@@ -37,8 +37,30 @@ const post = async <T>(path: string, body?: any): Promise<T> => {
   return data;
 }
 
+export const postWithoutAuth = async <T>(path: string, body?: any) => {
+  try {
+    const res = await fetch(path, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json'},
+      body: JSON.stringify(body),
+    })
+
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
+
+    const data = await res.json() as T;
+    return data;
+    
+  } catch (error) {
+    return Promise.reject(error);
+  }
+}
+
+
 export const ApiClient = {
   get,
   getWithoutAuth,
   post,
+  postWithoutAuth,
 }
