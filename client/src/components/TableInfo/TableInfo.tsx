@@ -2,23 +2,21 @@ import { Avatar, Col, Row, Button} from 'antd'
 import { HeartOutlined, UserOutlined  } from '@ant-design/icons';
 import { TableData } from '../../type/Card.types'
 import type { SizeType } from 'antd/es/config-provider/SizeContext';
-import { VideoService } from "../../services/Video/VideoService";
 import './TableInfo.css'
 import { useState } from 'react';
 
 interface ITableInfo {
-  table: TableData
+  table: TableData,
+  toggleLike: (id: number) => {}
 }
 
-export const TableInfo = ({table} : ITableInfo) => {
+export const TableInfo = ({table, toggleLike} : ITableInfo) => {
   const [size, setSize] = useState<SizeType>('large');
   const { id, author, description, like} = table
-  const [likes, setLikes] = useState<number>();
 
 
   const putLike = async () => {
-    const updateLike = await VideoService.like(id);
-    setLikes((await updateLike).likes)
+    toggleLike(id); 
   }
 
   return (
@@ -31,7 +29,7 @@ export const TableInfo = ({table} : ITableInfo) => {
       </Col>
       <Col span={8} offset={0}>
         <div className='like'>
-          <Button  shape="round" size={size} onClick={putLike}>{likes} <HeartOutlined/></Button>
+          <Button  shape="round" size={size} onClick={putLike} disabled>{like} <HeartOutlined/></Button>
         </div>
       </Col>
     </Row>

@@ -18,6 +18,17 @@ export const Viewing: React.FC = () => {
   const {id, name, author, data, description, link, like} = video;
   const table = { id, author, data, description, like};
   const play = {name, link }
+  
+
+  const toggleLike = async (id: number) => {
+    try {
+      await VideoService.like(id);
+      getVideo();
+    } catch (error) {
+      
+    }
+    
+  }
 
   useEffect(() => {
     getVideo();
@@ -27,7 +38,7 @@ export const Viewing: React.FC = () => {
   return (
     <>
     <VideoPlay videoData={play}/>
-    <TableInfo table={table}/>
+    <TableInfo table={table} toggleLike={toggleLike} />
     </>
   )
 }
