@@ -1,13 +1,15 @@
 import { useParams } from "react-router-dom"
 import { VideoPlay } from "../../components/VideoPlay/VideoPlay"
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { VideoPlayType } from "../../services/Video/VideoService.types";
 import { VideoService } from "../../services/Video/VideoService";
 import { TableInfo } from "../../components/TableInfo/TableInfo";
+import { AuthContext } from "../../context/AuthContext";
 
 export const Viewing: React.FC = () => {
   const [video, setVideo] = useState<VideoPlayType>({} as VideoPlayType);
   const { id_user } = useParams();
+  const { token } = useContext(AuthContext)
   
 
   const getVideo  = async () => {
@@ -38,7 +40,7 @@ export const Viewing: React.FC = () => {
   return (
     <>
     <VideoPlay videoData={play}/>
-    <TableInfo table={table} toggleLike={toggleLike} />
+    <TableInfo table={table} toggleLike={toggleLike} viewOnly={!token} />
     </>
   )
 }

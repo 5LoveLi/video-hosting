@@ -7,13 +7,15 @@ import { useState } from 'react';
 
 interface ITableInfo {
   table: TableData,
+  viewOnly: boolean,
   toggleLike: (id: number) => {}
 }
 
-export const TableInfo = ({table, toggleLike} : ITableInfo) => {
+export const TableInfo = ({table, toggleLike, viewOnly} : ITableInfo) => {
   const [size, setSize] = useState<SizeType>('large');
   const { id, author, description, like} = table
 
+  console.log(viewOnly)
 
   const putLike = async () => {
     toggleLike(id); 
@@ -29,7 +31,7 @@ export const TableInfo = ({table, toggleLike} : ITableInfo) => {
       </Col>
       <Col span={8} offset={0}>
         <div className='like'>
-          <Button  shape="round" size={size} onClick={putLike} disabled>{like} <HeartOutlined/></Button>
+          <Button  shape="round" size={size} onClick={putLike} disabled={viewOnly}>{like} <HeartOutlined/></Button>
         </div>
       </Col>
     </Row>
