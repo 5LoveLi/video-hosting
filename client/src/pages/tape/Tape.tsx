@@ -4,6 +4,7 @@ import { VideoService } from '../../services/Video/VideoService';
 import { TapeDTO } from '../../services/Video/VideoService.types';
 import { VisitCard } from '../../components/VisitCard/VisitCard';
 import { useParams } from 'react-router-dom';
+import { Header } from '../../components/Header/Header';
 
 
 
@@ -32,6 +33,7 @@ export const Tape: React.FC = () => {
 
   return(
     <>
+    <Header/>
      <Row>
       {cards.map((card) => (<Col lg={{ span: 4, offset: 3 }}><VisitCard visitCard={card}/></Col>))}
      </Row>

@@ -5,6 +5,7 @@ import { VideoPlayType } from "../../services/Video/VideoService.types";
 import { VideoService } from "../../services/Video/VideoService";
 import { TableInfo } from "../../components/TableInfo/TableInfo";
 import { AuthContext } from "../../context/AuthContext";
+import { Header } from "../../components/Header/Header";
 
 export const Viewing: React.FC = () => {
   const [video, setVideo] = useState<VideoPlayType>({} as VideoPlayType);
@@ -39,6 +40,7 @@ export const Viewing: React.FC = () => {
 
   return (
     <>
+    <Header/>
     <VideoPlay videoData={play}/>
     <TableInfo table={table} toggleLike={toggleLike} viewOnly={!token} />
     </>
