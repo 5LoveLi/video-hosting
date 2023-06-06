@@ -1,11 +1,11 @@
 // import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
-import { Avatar, Card } from 'antd';
+import { Card, Image } from 'antd';
 import { HeartOutlined } from '@ant-design/icons';
 
 import "./VisitCard.css"
 import { TapeDTO } from "../../services/Video/VideoService.types";
 
-import { VideoPlay } from "../VideoPlay/VideoPlay";
+import { useNavigate } from 'react-router-dom';
 
 const { Meta } = Card;
 
@@ -13,30 +13,39 @@ interface IVisitCard {
   visitCard: TapeDTO
 }
 
-export const VisitCard = ({visitCard} : IVisitCard) => {
-  const {id, name, preview, author, like} = visitCard;
+export const VisitCard = ({ visitCard }: IVisitCard) => {
+  const { id, name, preview, author, like } = visitCard;
+  const navigate = useNavigate();
+
+  const selectCard = () => {
+    navigate(`/viewing/${id}`);
+  }
 
   return (<>
-  <div className="card">
-    <a href={`/viewing/${id}`}>
     <Card
-    style={{ width: 350}}
-    cover={
-      <img
-        alt="example"
-        src={preview}
+      className='card'
+      hoverable
+      onClick={selectCard}
+      cover={
+        <div className='image-wrapper'>
+          <img
+            className='image'
+            // preview={false}
+            alt="example"
+            src={preview}
+          />
+        </div>
+      }
+    >
+      <div>
+      <Meta
+        // avatar={<Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />}
+        title={name}
+        description={author}
       />
-    }
-  >
-    <Meta
-      // avatar={<Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />}
-      title={name}
-      description={author}
-    />
-    {<div className="like">{like} <HeartOutlined /></div>}
-  </Card>
-  </a>
-  </div>
+      <div className="like">{like} <HeartOutlined /></div>
+      </div>
+    </Card>
   </>
   )
 }

@@ -13,8 +13,7 @@ export const VideoPlay = ({videoData} : IVideoPlay) => {
     <div className="video">
       <div>
         <video controls width='1000'>
-          <source src='https://04ff-5-165-233-226.ngrok-free.app/video/японец.mp4'></source>
-          {link}
+          <source src={link}></source>
         </video>
       </div>
         <p className='nameVideo'>{name}</p>

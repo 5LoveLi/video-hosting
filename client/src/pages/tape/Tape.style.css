@@ -1,0 +1,7 @@
+.content-wrapper {
+  display: flex;
+}
+
+.grid-row {
+  width: 100%;
+}

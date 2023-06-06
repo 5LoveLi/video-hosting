@@ -5,6 +5,8 @@ import { TapeDTO } from '../../services/Video/VideoService.types';
 import { VisitCard } from '../../components/VisitCard/VisitCard';
 import { useParams } from 'react-router-dom';
 import { Header } from '../../components/Header/Header';
+import { Navigation } from '../../components/Navigation/Navigation';
+import './Tape.style.css'
 
 
 
@@ -31,12 +33,22 @@ export const Tape: React.FC = () => {
 
   }, [])
 
-  return(
+  return (
     <>
-    <Header/>
-     <Row>
-      {cards.map((card) => (<Col lg={{ span: 4, offset: 3 }}><VisitCard visitCard={card}/></Col>))}
-     </Row>
-  </>)
+      <Header />
+      <div className='content-wrapper'>
+        <Navigation />
+        <Row gutter={16} className='grid-row'>
+          {cards.map((card) => (
+            <Col span={6} >
+              <VisitCard visitCard={card} />
+            </Col>
+          ))}
+        </Row>
+      </div>
+    </>)
 
 }
+
+
+// {/* <Col lg={{ span: 4, offset: 3 }}></Col> */}
