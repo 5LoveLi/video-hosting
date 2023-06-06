@@ -1,7 +1,8 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
+from typing import Annotated
 
-from main import app, get_db
+from main import app, get_db, oauth2_scheme
 from src.cruds import videoCrud, userCrud, likeCrud
 from src.schemas.videoSchema import VisitCard
 
@@ -28,6 +29,22 @@ async def get_tape(db: Session = Depends(get_db)):
 @router.get('/search/{string_search}')
 async def get(string_search:str, db: Session = Depends(get_db)):
     videos = videoCrud.get_video_by_name(db=db, name=string_search)
+    tape = correction_data(videos, db)
+    return tape
+
+
+@router.get('/like')
+async def get_tape_like(token: Annotated[str, Depends(oauth2_scheme)], db: Session = Depends(get_db)):
+    user_id = userCrud.get_current_user(db, token).id
+    videos = videoCrud.get_videos_by_like(db, user_id)
+    tape = correction_data(videos, db)
+    return tape
+
+
+@router.get('/my')
+async def get_tape(token: Annotated[str, Depends(oauth2_scheme)], db: Session = Depends(get_db)):
+    user_id = userCrud.get_current_user(db, token).id
+    videos = videoCrud.get_my_create_videos(db, user_id)
     tape = correction_data(videos, db)
     return tape
 

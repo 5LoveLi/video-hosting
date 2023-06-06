@@ -8,6 +8,9 @@ from src.schemas.likeShema import LikeCreate
 def get_all_likes_video(db: Session, video_id: int):
     return len(db.query(Like).filter(Like.id_video == video_id).all())
 
+def get_all_video_like_user(db: Session, user_id: int):
+    return db.query( Like).filter(Like.id_user == user_id).all()
+
 
 def user_like_video(db: Session, video_id: int, user_id: int):
     return db.query(Like).filter(Like.id_video == video_id, Like.id_user == user_id).first()

@@ -1,5 +1,6 @@
 from sqlalchemy.orm import Session
 from datetime import datetime
+from .likeCrud import get_all_video_like_user
 
 from src.models.video import Video
 
@@ -13,6 +14,18 @@ def get_video_by_id(db: Session, id:int):
 
 def get_video_by_name(db: Session, name: str):
     return db.query(Video).filter(Video.name == name).all()
+
+
+def get_videos_by_like(db: Session, id_user: int): 
+    likes = get_all_video_like_user(db=db, user_id=id_user)
+    videos = []
+    for like in likes:
+        videos.append(get_video_by_id(db, like.id_video))
+
+    return videos
+
+def get_my_create_videos(db: Session, id_user: int):
+    return db.query(Video).filter(Video.id_author==id_user)
 
 
 def create_video(db: Session, video_name, video_description, id_author, preview, video_link):
