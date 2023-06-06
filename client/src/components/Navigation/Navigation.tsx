@@ -45,13 +45,20 @@ const items: MenuItem[] = [
     </a>,
     'link',
     <HeartOutlined style={{ fontSize: '20px'}}/>, 
-    // false,
+    ),
+
+  getItem(
+    <a href={'/my'} rel="noopener noreferrer">
+      Мои видео
+    </a>,
+    'link',
+    <PlaySquareOutlined style={{ fontSize: '20px'}}/>,
     ),
 
 
 
-  getItem('Мои видео', 'sub1', <PlaySquareOutlined style={{ fontSize: '20px'}}/>),
-  getItem('Navigation Three', 'sub2', <SettingOutlined style={{ fontSize: '20px'}}/>),
+  // getItem('Мои видео', 'sub1', <PlaySquareOutlined style={{ fontSize: '20px'}}/>),
+  // getItem('Navigation Three', 'sub2', <SettingOutlined style={{ fontSize: '20px'}}/>),
   // getItem(
   //   <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
   //     Ant Design

@@ -8,6 +8,7 @@ import { Authorization } from '../pages/authorization/Authorization'
 import { CreateVideo } from '../pages/createVideo/CreateVideo'
 import { Tape } from '../pages/tape/Tape'
 import { LikeVideoTape } from '../pages/likeVideoTape/LikeVideoTape'
+import { MyCreateVideoTape } from '../pages/myCreateVideoTape/MyCreateVideoTape'
 
 // import { Test } from '../pages/test'
 
@@ -20,6 +21,7 @@ export const Private = () => {
         <Routes>
           <Route path='/' element={<Tape />} />
           <Route path='/like' element={<LikeVideoTape />} />
+          <Route path='/my' element={<MyCreateVideoTape />} />
           <Route path="/registration" element={<Registration />} />
           <Route path="/authorization" element={<Authorization />} />
           <Route path="/viewing/:id_user" element={<Viewing/>} />
