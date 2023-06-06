@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 from main import app, get_db
-from src.cruds import videoCrud, likeCrud, userCrud
+from src.cruds import videoCrud, userCrud, likeCrud
 from src.schemas.videoSchema import VisitCard
 
 router = APIRouter()

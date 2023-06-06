@@ -6,13 +6,14 @@ class VideoBase(BaseModel):
     id: int
     name: str
     author: str
+    like: int
 
 
 
 class VisitCard(VideoBase):
     preview: str
 
-    like: int
+    
 
 
 class Video(VideoBase): 

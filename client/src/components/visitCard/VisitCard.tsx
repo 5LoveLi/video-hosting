@@ -1,5 +1,3 @@
-import { CardData } from "../../type/Card.types"
-
 // import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import { Avatar, Card } from 'antd';
 import { HeartOutlined } from '@ant-design/icons';
@@ -9,12 +7,14 @@ import { TapeDTO } from "../../services/Video/VideoService.types";
 
 import { VideoPlay } from "../VideoPlay/VideoPlay";
 
-
 const { Meta } = Card;
 
+interface IVisitCard {
+  visitCard: TapeDTO
+}
 
-export const VisitCard = (card: TapeDTO) => {
-  const {id, name, preview, author, like} = card;
+export const VisitCard = ({visitCard} : IVisitCard) => {
+  const {id, name, preview, author, like} = visitCard;
 
   return (<>
   <div className="card">

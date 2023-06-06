@@ -9,7 +9,7 @@ from typing import Annotated
 
 from main import app, get_db, oauth2_scheme
 from src.cruds import videoCrud, userCrud
-from src.storage.localStorage import upload_video_local, upload_preview_local
+from src.storage.minioStorage import upload_video_minio, upload_preview_minio
 
 
 
@@ -21,8 +21,8 @@ async def upload_file(token: Annotated[str, Depends(oauth2_scheme)], file_video:
   
     user = userCrud.get_current_user(db, token)
 
-    path_video = upload_video_local(file_video, name_file)
-    path_preview = upload_preview_local(file_preview, name_file)
+    path_video = upload_video_minio(file_video, name_file)
+    path_preview = upload_preview_minio(file_preview, name_file)
 
     db_video = videoCrud.get_video_by_name(db, name=name_file)
 
