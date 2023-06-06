@@ -8,6 +8,12 @@ export const VideoService = {
     return data;
   },
 
+  likeGallery: async () => {
+    const data = await ApiClient.get<Array<TapeDTO>>('/tape/like');
+
+    return data;
+  },
+
   play: async (id: any) => {
     const data = await ApiClient.getWithoutAuth<VideoPlayType>(`/viewing/${id}`)
 
