@@ -29,8 +29,7 @@ export const Viewing: React.FC = () => {
       getVideo();
     } catch (error) {
       
-    }
-    
+    } 
   }
 
   useEffect(() => {
@@ -40,7 +39,6 @@ export const Viewing: React.FC = () => {
 
   return (
     <>
-    <Header/>
     <VideoPlay videoData={play}/>
     <TableInfo table={table} toggleLike={toggleLike} viewOnly={!token} />
     </>

@@ -1,3 +1,4 @@
-.indent {
-  margin: 15px;
+.action-column {
+  display: flex;
+  justify-content: flex-end;
 }

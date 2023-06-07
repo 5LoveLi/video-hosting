@@ -4,16 +4,12 @@ import { VideoService } from '../../services/Video/VideoService';
 import { TapeDTO } from '../../services/Video/VideoService.types';
 import { VisitCard } from '../../components/VisitCard/VisitCard';
 import { useParams } from 'react-router-dom';
-import { Header } from '../../components/Header/Header';
-import { Navigation } from '../../components/Navigation/Navigation';
-// import './Tape.style.css'
 
 
 
 export const MyCreateVideoTape: React.FC = () => {
   const [cards, setCards] = useState<Array<TapeDTO>>([])
   const { str } = useParams();
-  // const { token } = useContext(AuthContext)
 
   const getTape = async () => {
     const cardsData = await VideoService.myGallery();
@@ -36,9 +32,7 @@ export const MyCreateVideoTape: React.FC = () => {
 
   return (
     <>
-      <Header />
       <div className='content-wrapper'>
-        <Navigation />
         <Row gutter={16} className='grid-row'>
           {cards.map((card) => (
             <Col span={6} >

@@ -5,80 +5,53 @@ import {
   SettingOutlined,
   PlaySquareOutlined,
 } from '@ant-design/icons';
-import { Menu} from 'antd';
+import { Menu } from 'antd';
 import type { MenuProps } from 'antd/es/menu';
 
 import "./Navigation.css"
+import { useNavigate } from 'react-router-dom';
 
-type MenuItem = Required<MenuProps>['items'][number];
-
-function getItem(
-  label: React.ReactNode,
-  key?: React.Key | null,
-  icon?: React.ReactNode,
-  children?: MenuItem[],
-  type?: 'group',
-  disabled?: Boolean
-): MenuItem {
-  return {
-    key,
-    icon,
-    children,
-    label,
-    type,
-    disabled
-  } as MenuItem;
-}
-
-const items: MenuItem[] = [
-  getItem(
-    <a href={'/'} rel="noopener noreferrer">
-      Главное
-    </a>,
-    'link',
-    <HomeOutlined style={{ fontSize: '20px'}}/>, 
-    ),
-  
-  getItem(
-    <a href={'/like'} rel="noopener noreferrer">
-      Понравившиеся
-    </a>,
-    'link',
-    <HeartOutlined style={{ fontSize: '20px'}}/>, 
-    ),
-
-  getItem(
-    <a href={'/my'} rel="noopener noreferrer">
-      Мои видео
-    </a>,
-    'link',
-    <PlaySquareOutlined style={{ fontSize: '20px'}}/>,
-    ),
-
-
-
-  // getItem('Мои видео', 'sub1', <PlaySquareOutlined style={{ fontSize: '20px'}}/>),
-  // getItem('Navigation Three', 'sub2', <SettingOutlined style={{ fontSize: '20px'}}/>),
-  // getItem(
-  //   <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
-  //     Ant Design
-  //   </a>,
-  //   'link',
-  //   // <LinkOutlined />,
-  // ),
+const items: MenuProps['items'] = [
+  {
+    label: 'Главная',
+    key: 'main',
+    icon: <HomeOutlined />,
+  },
+  {
+    label: 'Понравившиеся',
+    key: 'liked',
+    icon: <HeartOutlined />,
+  },
+  {
+    label: 'Мои видео',
+    key: 'video',
+    icon: <HeartOutlined />,
+  },
 ];
 
 export const Navigation = () => {
+  const [current, setCurrent] = useState('main');
+  const navigate = useNavigate();
 
+  const onClick: MenuProps['onClick'] = (e) => {
+    const { key } = e;
+    if (key === 'main') {
+      navigate('/')
+    } else if (key === 'liked') {
+      navigate('/like')
+    } else if (key === 'video') {
+      navigate('/my')
+    }
+    setCurrent(key);
+  };
 
   return (
-    <div className='myMenu'>
+    <div className='menu-wrapper'>
       <Menu
-        style={{ width: 78,}}
-        defaultSelectedKeys={['1']}
-        defaultOpenKeys={['sub1']}
-        mode="inline"
-        inlineCollapsed={true}
+        className='menu'
+        selectedKeys={[current]}
+        onClick={onClick}
+        mode="horizontal"
         items={items}
       />
     </div>

@@ -37,9 +37,7 @@ export const LikeVideoTape: React.FC = () => {
 
   return (
     <>
-      <Header />
       <div className='content-wrapper'>
-        <Navigation />
         <Row gutter={16} className='grid-row'>
           {cards.map((card) => (
             <Col span={6} >
