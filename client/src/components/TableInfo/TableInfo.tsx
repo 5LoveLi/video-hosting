@@ -15,7 +15,7 @@ export const TableInfo = ({table, toggleLike, viewOnly} : ITableInfo) => {
   const [size, setSize] = useState<SizeType>('large');
   const { id, author, description, like} = table
 
-  console.log(viewOnly)
+  // console.log(viewOnly)
 
   const putLike = async () => {
     toggleLike(id); 

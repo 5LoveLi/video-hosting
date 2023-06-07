@@ -36,5 +36,12 @@ export const VideoService = {
     const data = await ApiClient.post<Like>(`/viewing/${id}/like`);
 
     return data;
-  }
+  }, 
+
+  create: async (form: FormData) => {
+    const data = await ApiClient.post<Like>('/video/upload', form);
+
+    return data;
+  }, 
+
 }

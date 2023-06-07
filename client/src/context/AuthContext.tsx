@@ -18,6 +18,11 @@ export const AuthProvider: React.FC<PropsWithChildren> = (props) => {
     setToken(tokenData.access_token)
   }
 
+  const tokenTimeout = () => {
+    // localStorage.removeItem(token);
+    setToken('');
+  }
+
   useEffect(() => {
     const localToken = localStorage.getItem(AUTH_TOKEN_KEY);
     setToken(localToken || '');
