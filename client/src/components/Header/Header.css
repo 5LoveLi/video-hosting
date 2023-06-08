@@ -2,3 +2,8 @@
   display: flex;
   justify-content: flex-end;
 }
+
+.bottom-create {
+ margin-top: 7px;
+ margin-right: 6px;
+}
