@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import {
   HeartOutlined,
   HomeOutlined,
-  SettingOutlined,
-  PlaySquareOutlined,
 } from '@ant-design/icons';
 import { Menu } from 'antd';
 import type { MenuProps } from 'antd/es/menu';

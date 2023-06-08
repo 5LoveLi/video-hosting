@@ -4,16 +4,17 @@ import { TableData } from '../../type/Card.types'
 import type { SizeType } from 'antd/es/config-provider/SizeContext';
 import './TableInfo.css'
 import { useState } from 'react';
+import { VideoPlayType } from '../../services/Video/VideoService.types';
 
 interface ITableInfo {
-  table: TableData,
+  videoData: VideoPlayType,
   viewOnly: boolean,
   toggleLike: (id: number) => {}
 }
 
-export const TableInfo = ({table, toggleLike, viewOnly} : ITableInfo) => {
+export const TableInfo = ({videoData, toggleLike, viewOnly} : ITableInfo) => {
   const [size, setSize] = useState<SizeType>('large');
-  const { id, author, description, like} = table
+  const { id, author, description, like} = videoData
 
   // console.log(viewOnly)
 
