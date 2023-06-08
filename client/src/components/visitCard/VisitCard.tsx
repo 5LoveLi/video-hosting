@@ -1,5 +1,5 @@
-// import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
-import { Card, Image } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
+import { Card, Avatar } from 'antd';
 import { HeartOutlined } from '@ant-design/icons';
 
 import "./VisitCard.css"
@@ -39,7 +39,7 @@ export const VisitCard = ({ visitCard }: IVisitCard) => {
     >
       <div>
       <Meta
-        // avatar={<Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />}
+        avatar={<Avatar icon={<UserOutlined />} />}
         title={name}
         description={author}
       />

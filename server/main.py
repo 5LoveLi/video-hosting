@@ -39,7 +39,7 @@ def get_db():
 
 
 
-from src.routes import registration, authorizations, createVideo, tape, likeVideo, viewing, pro
+from src.routes import registration, authorizations, createVideo, tape, likeVideo, viewing
 
 
 
