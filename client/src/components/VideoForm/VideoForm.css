@@ -1,4 +1,10 @@
 .video-create-form {
-  max-width: 500px;
+  display: flex; 
+  align-self: flex-end;
+  max-width: 300px;
   width: 100%;
 }
+
+/* .create-name {
+  width: 300px;
+} */
