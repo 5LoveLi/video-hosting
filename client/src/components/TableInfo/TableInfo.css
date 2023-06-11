@@ -5,11 +5,13 @@
 
 .author {
   font-size: 20px;
+  /* margin-left: 6px; */
 }
 
 .description {
   margin-top: 15px;
 }
 
-.tab {
+.author-img{
+  margin-right: 5px;
 }

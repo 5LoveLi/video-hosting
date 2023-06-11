@@ -26,9 +26,8 @@ export const TableInfo = ({videoData, toggleLike, viewOnly} : ITableInfo) => {
   <div className='tab'>
     <Row>
       <Col span={8} className='author'>
-        {/* <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" size={45}/> */}
         <Avatar size={43} icon={<UserOutlined />} className='author-img'/> 
-       {author} 
+       {author}
       </Col>
       <Col span={8} offset={0}>
         <div className='like'>
