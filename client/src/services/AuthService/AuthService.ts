@@ -1,4 +1,4 @@
-import { ApiClient } from "../../api/apiClient";
+import { AliClientInstance } from "../../api/ApiClient";
 import { AuthScheme } from "./AuthService.types";
 
 export const AuthService = {
@@ -7,7 +7,7 @@ export const AuthService = {
     formDataBody.append('username', login);
     formDataBody.append('password', password);
 
-    const tokenData = await ApiClient.post<AuthScheme>('/login', formDataBody);
+    const tokenData = await AliClientInstance.post<AuthScheme>('/login', formDataBody);
 
     return tokenData;
   }

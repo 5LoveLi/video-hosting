@@ -1,12 +1,12 @@
 from fastapi import Depends
 from sqlalchemy.orm import Session
 
-from main import app, get_db
+from main import router, get_db
 from src.cruds import videoCrud, userCrud, likeCrud
 from src.schemas.videoSchema import Video
 
 
-@app.get('/viewing/{video_id}')
+@router.get('/viewing/{video_id}')
 def viewing_video(video_id, db: Session = Depends(get_db)):
     video_db = videoCrud.get_video_by_id(db=db, id=video_id)
     likes = likeCrud.get_all_likes_video(db=db, video_id=video_id)

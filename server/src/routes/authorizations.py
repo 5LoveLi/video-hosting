@@ -8,11 +8,10 @@ from sqlalchemy.orm import Session
 from jose import JWTError, jwt
 from dotenv import load_dotenv
 
-from main import app, get_db, oauth2_scheme
+from main import get_db, oauth2_scheme, router
 
 from src.cruds import userCrud
 from src.schemas import authSchema, userSchema
-
 
 load_dotenv('.env')
 
@@ -56,7 +55,7 @@ async def get_current_user(db: Session, token: Annotated[str, Depends(oauth2_sch
 
 
 
-@app.post("/login", response_model=authSchema.Token)
+@router.post("/login", response_model=authSchema.Token)
 async def login(form_data: Annotated[OAuth2PasswordRequestForm, Depends()], db: Session = Depends(get_db)):
     user = userCrud.authenticate_user(db, form_data.username, form_data.password)
     if not user:

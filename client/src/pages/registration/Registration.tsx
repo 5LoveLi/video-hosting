@@ -8,7 +8,6 @@ export const Registration: React.FC = () => {
         <h2> Регистрация</h2>
         <RegistrForm />
       </div>
-
     </>
   )
 }

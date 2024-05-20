@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, APIRouter
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import OAuth2PasswordBearer
 
@@ -13,6 +13,8 @@ like.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
+router = APIRouter(prefix='/api')
+
 origins = [
     'http://localhost',
     'http://localhost:3000/'
@@ -26,9 +28,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
-
 
 def get_db():
     db = SessionLocal()
@@ -37,14 +37,6 @@ def get_db():
     finally:
         db.close()
 
-
-
 from src.routes import registration, authorizations, createVideo, tape, likeVideo, viewing
 
-
-
-
-
-
-
-
+app.include_router(router)

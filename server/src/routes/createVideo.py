@@ -7,13 +7,13 @@ from fastapi import Depends, HTTPException, File, Form
 from sqlalchemy.orm import Session
 from typing import Annotated
 
-from main import app, get_db, oauth2_scheme
+from main import router, get_db, oauth2_scheme
 from src.cruds import videoCrud, userCrud
 from src.storage.minioStorage import upload_video_minio, upload_preview_minio
 
 
 
-@app.post("/video/upload")
+@router.post("/video/upload")
 async def upload_file(token: Annotated[str, Depends(oauth2_scheme)], file_video: bytes = File(...), file_preview: bytes = File(...), json_data: str = Form(...), db: Session = Depends(get_db)):
     
     data_dict = json.loads(json_data)

@@ -5,10 +5,10 @@ from src.cruds import userCrud
 from src.schemas import userSchema
 
 
-from main import app, get_db
+from main import router, get_db
 
 
-@app.post('/register')
+@router.post('/register')
 async def create_user(user: userSchema.UserCreate, db: Session = Depends(get_db)):
     db_user = userCrud.get_user_by_login(db, login=user.login)
     if db_user:

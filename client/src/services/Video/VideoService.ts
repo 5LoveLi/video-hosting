@@ -1,45 +1,45 @@
-import { ApiClient } from "../../api/apiClient"
+import { AliClientInstance } from "../../api/ApiClient"
 import { TapeDTO, VideoPlayType, Like } from "./VideoService.types"
 
 export const VideoService = {
   gallery: async () => {
-    const data = await ApiClient.getWithoutAuth<Array<TapeDTO>>('/tape');
+    const data = await AliClientInstance.getWithoutAuth<Array<TapeDTO>>('/tape');
 
     return data;
   },
 
   likeGallery: async () => {
-    const data = await ApiClient.get<Array<TapeDTO>>('/tape/like');
+    const data = await AliClientInstance.get<Array<TapeDTO>>('/tape/like');
 
     return data;
   },
 
   myGallery: async () => {
-    const data = await ApiClient.get<Array<TapeDTO>>('/tape/my');
+    const data = await AliClientInstance.get<Array<TapeDTO>>('/tape/my');
 
     return data;
   },
 
   play: async (id: any) => {
-    const data = await ApiClient.getWithoutAuth<VideoPlayType>(`/viewing/${id}`)
+    const data = await AliClientInstance.getWithoutAuth<VideoPlayType>(`/viewing/${id}`)
 
     return data
   },
 
   search: async (str: any) => {
-    const data = await ApiClient.getWithoutAuth<Array<TapeDTO>>(`tape/search/${str}`);
+    const data = await AliClientInstance.getWithoutAuth<Array<TapeDTO>>(`tape/search/${str}`);
 
     return data;
   }, 
 
   like: async (id: any) => {
-    const data = await ApiClient.post<Like>(`/viewing/${id}/like`);
+    const data = await AliClientInstance.post<Like>(`/viewing/${id}/like`);
 
     return data;
   }, 
 
   create: async (form: FormData) => {
-    const data = await ApiClient.post<Like>('/video/upload', form);
+    const data = await AliClientInstance.post<Like>('/video/upload', form);
 
     return data;
   }, 

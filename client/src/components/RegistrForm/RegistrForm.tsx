@@ -5,8 +5,6 @@ import { Button, Form, Input } from 'antd';
 import './RegistrForm.css'
 import { RegisterService } from '../../services/RegisterService/RegisterService';
 
-
-
 export const RegistrForm = () => {
 
   const [login, setLogin] = useState('');

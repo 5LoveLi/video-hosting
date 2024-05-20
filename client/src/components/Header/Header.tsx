@@ -5,10 +5,7 @@ import './Header.css'
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from 'react-router-dom';
-import { AUTH_TOKEN_KEY } from "../../constants/application";
-
-
-
+import { TOKEN_KEY } from "../../constants/all";
 
 const authorizedMenu: MenuProps['items'] = [
   {
@@ -29,7 +26,7 @@ export const Header: React.FC = () => {
 
   const handleMenuClick: MenuProps['onClick'] = (e) => {
     if( e.key === '1') {
-      localStorage.removeItem(AUTH_TOKEN_KEY);
+      localStorage.removeItem(TOKEN_KEY);
       navigate('/')
       window.location.reload();
     } else {

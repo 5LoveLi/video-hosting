@@ -6,7 +6,7 @@ from main import app, get_db, oauth2_scheme
 from src.cruds import videoCrud, userCrud, likeCrud
 from src.schemas.videoSchema import VisitCard
 
-router = APIRouter()
+router = APIRouter(prefix="/api/tape")
 
 def correction_data(videos: list, db):
     tape = []
@@ -23,8 +23,6 @@ async def get_tape(db: Session = Depends(get_db)):
     videos = videoCrud.get_video(db)
     tape = correction_data(videos, db)
     return tape
-
-
 
 @router.get('/search/{string_search}')
 async def get(string_search:str, db: Session = Depends(get_db)):
@@ -48,7 +46,4 @@ async def get_tape(token: Annotated[str, Depends(oauth2_scheme)], db: Session = 
     tape = correction_data(videos, db)
     return tape
 
-
-
-app.include_router(router, prefix="/tape")
-
+app.include_router(router)

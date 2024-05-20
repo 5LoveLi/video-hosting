@@ -1,8 +1,8 @@
-import { ApiClient } from "../../api/apiClient"
+import { AliClientInstance } from "../../api/ApiClient"
 
 export const RegisterService = {
   register: async (body: any) => {
-    const data = await ApiClient.postWithoutAuth<any>('/register', body)
+    const data = await AliClientInstance.postWithoutAuth<any>('/register', body)
 
     return data;
   }

@@ -5,7 +5,7 @@ import { Registration } from './pages/registration/Registration';
 import { Private } from './routes/Private';
 import 'antd/dist/reset.css';
 
-function App() {
+export function App() {
 
   return (
     <div>
@@ -22,4 +22,3 @@ function App() {
   );
 }
 
-export default App;
